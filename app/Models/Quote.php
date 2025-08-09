@@ -2,30 +2,21 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class QuoteRequest extends Model
+class Quote extends Model
 {
-    use HasFactory;
-
     protected $fillable = [
         'customer_name',
         'email',
+        'company_name',
         'phone',
-        'company',
-        'products',
         'additional_requirements',
         'urgency',
-        'status'
+        'products'
     ];
 
     protected $casts = [
         'products' => 'array',
     ];
-        public function items()
-    {
-        return $this->hasMany(QuoteRequestItem::class, 'quote_request_id');
-    }
-
 }

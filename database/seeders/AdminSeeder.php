@@ -18,6 +18,8 @@ class AdminSeeder extends Seeder
             [
                 'name' => 'Super Admin',
                 'password' => Hash::make('Suportfam$11'),
+                'phone' => '123-456-7890',
+                //'user_type' => 'admin'
             ]
         );
     }

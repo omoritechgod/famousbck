@@ -9,25 +9,27 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up()
+    public function up(): void
     {
-        Schema::create('admins', function (Blueprint $table) {
+        Schema::create('quotes', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
+            $table->string('customer_name');
             $table->string('email')->unique();
-            $table->string('password');
+            $table->string('company_name');
             $table->string('phone')->unique();
-            $table->rememberToken();
+            $table->text('additional_requirements')->nullable();
+            $table->json('products');
+            $table->string('urgency')->nullable();
             $table->timestamps();
+
         });
     }
-
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        //
+        Schema::dropIfExists('quotes');
     }
 };
