@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\GetMailController;
 use App\Http\Controllers\NewLetterController;
 use App\Http\Controllers\QuoteController;
 use Illuminate\Support\Facades\Route;
@@ -45,11 +46,11 @@ Route::post('/admin/login', [AuthController::class, 'login'])->name('login');
 
 Route::post('/subscribe', [SubscriptionController::class, 'subscribe']);
 
-Route::middleware('auth:sanctum')->group(function(){
-    Route::post('/quote-requests', [QuoteController::class, 'store']);
-    Route::post('/new-email', [NewLetterController::class, 'newletter']);
-    Route::post('/contact-us', [ContactController::class, 'store']);
-});
+
+Route::post('/quote-requests', [QuoteController::class, 'store']);
+Route::post('/new-email', [NewLetterController::class, 'newletter']);
+Route::post('/contact-us', [ContactController::class, 'store']);
+Route::get('/get-emails', [GetMailController::class, 'get']);
 
 Route::post('/log-error', function (Request $request) {
     Log::error('Frontend Error', [

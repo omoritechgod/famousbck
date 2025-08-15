@@ -14,9 +14,9 @@ return new class extends Migration
         Schema::create('quotes', function (Blueprint $table) {
             $table->id();
             $table->string('customer_name');
-            $table->string('email')->unique();
+            $table->string('email');
             $table->string('company_name');
-            $table->string('phone')->unique();
+            $table->string('phone');
             $table->text('additional_requirements')->nullable();
             $table->json('products');
             $table->string('urgency')->nullable();

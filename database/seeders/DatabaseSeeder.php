@@ -18,9 +18,10 @@ class DatabaseSeeder extends Seeder
             AdminSeeder::class,
         ]);
         
-        User::factory()->create([
-            'name' => 'Test User',
-            'email' => 'test@example.com',
-        ]);
+        // User::factory()->create([
+        //     'name' => 'Test User',
+        //     'email' => 'test@example.com',
+        //     'phone' => '123-456-7890'
+        // ]);
     }
 }

@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Mail\QuoteRequestMail;
 use App\Models\Quote;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Mail;
 
 class QuoteController extends Controller
 {
@@ -30,10 +32,12 @@ class QuoteController extends Controller
 
         // Create the quote
         $quote = Quote::create($validated);
+
+        Mail::to('info@famousitsolutionltd.com')->send(new QuoteRequestMail($quote));
         
         return response()->json([
             'message' => 'Quote created successfully.',
-            'quote_id' => $quote->id,
+            'data' => $quote->id
         ], 201);
     }
 
